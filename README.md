@@ -8,7 +8,6 @@ See the API's [documentation](DOCS.md).
 
 After you generate your project, these commands are available in `package.json`.
 
-
 ```bash
 npm test # test using Jest
 npm run test:unit # run unit tests
