@@ -14,11 +14,13 @@ const changePropertiesToUpperCamelCase = obj => {
   return newobj
 };
 
-export const create = ({ user, bodymen: { body } }, res, next) =>
-  Weddings.create({ ...body, user })
+export const create = ({ user, bodymen: { body } }, res, next) => {
+  var bodyUpperCamelCase = changePropertiesToUpperCamelCase(body)
+  return Weddings.create({ ...bodyUpperCamelCase, user })
     .then(weddings => weddings.view(true))
     .then(success(res, 201))
     .catch(next)
+}
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) => {
   query.Confirm = true
