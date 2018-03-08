@@ -96,6 +96,9 @@ const weddingsSchema = new Schema({
   },
   AdditionalInfo: {
     type: String
+  },
+  Segment: {
+    type: String
   }
 }, {
   timestamps: true
@@ -139,7 +142,8 @@ weddingsSchema.methods = {
       celebrationNotes: this.CelebrationNotes,
       additionalInfo: this.AdditionalInfo,
       createdAt: this.CreatedAt,
-      updatedAt: this.UpdatedAt
+      updatedAt: this.UpdatedAt,
+      segment: this.Segment
     }
 
     return full ? {

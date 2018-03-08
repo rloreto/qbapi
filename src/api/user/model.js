@@ -33,6 +33,10 @@ const userSchema = new Schema({
   picture: {
     type: String,
     trim: true
+  },
+  segment: {
+    type: String,
+    trim: true
   }
 }, {
   timestamps: true
