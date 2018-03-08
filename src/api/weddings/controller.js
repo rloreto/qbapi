@@ -45,7 +45,7 @@ export const show = ({ params }, res, next) =>
     .catch(next)
 
 export const update = ({ user, bodymen: { body }, params }, res, next) => {
-  bodyUpperCamelCase.segment = res.req.user.segment
+  body.segment = res.req.user.segment
   var bodyUpperCamelCase = changePropertiesToUpperCamelCase(body)
   console.log(bodyUpperCamelCase)
   return Weddings.findById(params.id)
