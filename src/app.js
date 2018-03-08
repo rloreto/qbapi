@@ -3,11 +3,8 @@ import { env, mongo, port, ip } from './config'
 import mongoose from './services/mongoose'
 import express from './services/express'
 import api from './api'
-const contextService = require('request-context')
 
 const app = express(api)
-debugger
-app.use(contextService.middleware('request'))
 const server = http.createServer(app)
 
 mongoose.connect(mongo.uri, { useMongoClient: true })
