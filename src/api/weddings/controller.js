@@ -15,7 +15,6 @@ const changePropertiesToUpperCamelCase = obj => {
 }
 
 export const create = ({ user, bodymen: { body } }, res, next) => {
-  debugger
   body.segment = res.req.user.segment
   var bodyUpperCamelCase = changePropertiesToUpperCamelCase(body)
 
