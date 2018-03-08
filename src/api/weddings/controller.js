@@ -28,7 +28,7 @@ export const create = ({ user, bodymen: { body } }, res, next) => {
 export const index = ({ querymen: { query, select, cursor } }, res, next) => {
   console.log(query)
   query.Confirm = true
-  // query.segment = res.req.user.segment
+  query.Segment = res.req.user.segment
   return Weddings.find(query, select, cursor)
     .populate('user')
     .then(weddings => weddings.map(weddings => weddings.view()))
