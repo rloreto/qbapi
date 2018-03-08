@@ -54,8 +54,8 @@ export const update = ({ user, bodymen: { body }, params }, res, next) => {
     .then(authorOrAdmin(res, user, 'user'))
     .then(
       weddings => {
-        const segment = res.req.user.segment
-        weddings ? _.merge(weddings, bodyUpperCamelCase, { segment: segment }).save() : null
+        bodyUpperCamelCase.segment = res.req.user.segment
+        weddings ? _.merge(weddings, bodyUpperCamelCase).save() : null
       }
     )
     .then(weddings => (weddings ? weddings.view(true) : null))
