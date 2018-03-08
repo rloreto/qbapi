@@ -19,7 +19,7 @@ export const create = ({ user, bodymen: { body } }, res, next) => {
   var bodyUpperCamelCase = changePropertiesToUpperCamelCase(body)
 
   return Weddings.create({ ...bodyUpperCamelCase, user })
-  .then(authorOrAdmin(res, user, user.segment))
+    .then(authorOrAdmin(res, user, user.segment))
     .then(weddings => weddings.view(true))
     .then(success(res, 201))
     .catch(next)
