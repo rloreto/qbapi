@@ -27,7 +27,6 @@ export const create = ({ user, bodymen: { body } }, res, next) => {
 
 export const index = ({ querymen: { query, select, cursor } }, res, next) => {
   console.log(query)
-  debugger
   query.Confirm = true
   // query.segment = res.req.user.segment
   return Weddings.find(query, select, cursor)
@@ -46,18 +45,14 @@ export const show = ({ params }, res, next) =>
     .catch(next)
 
 export const update = ({ user, bodymen: { body }, params }, res, next) => {
+  bodyUpperCamelCase.segment = res.req.user.segment
   var bodyUpperCamelCase = changePropertiesToUpperCamelCase(body)
   console.log(bodyUpperCamelCase)
   return Weddings.findById(params.id)
     .populate('user')
     .then(notFound(res))
     .then(authorOrAdmin(res, user, 'user'))
-    .then(
-      weddings => {
-        bodyUpperCamelCase.segment = res.req.user.segment
-        weddings ? _.merge(weddings, bodyUpperCamelCase).save() : null
-      }
-    )
+    .then(wedding => wedding ? _.merge(wedding, bodyUpperCamelCase).save() : null)
     .then(weddings => (weddings ? weddings.view(true) : null))
     .then(success(res))
     .catch(next)
